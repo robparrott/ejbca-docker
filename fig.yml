@@ -1,0 +1,46 @@
+
+#
+# Configure a plain PostgreSQL 9.1 database
+#
+postgresql:
+  image: postgres:9.1
+  ports:
+    - "5432:5432"
+  environment:
+    POSTGRES_PASSWORD: ejbca
+    POSTGRES_USER: ejbca
+
+ejbca:
+  build: ./ejbca
+  ports:
+    - "8080:8080"
+    - "5701"
+  volumes:
+    - .:/app
+  links:
+    - postgresql
+
+
+
+
+
+# webproxy:
+#   image: hipache
+#   ports:
+#     - "80:8080"
+#   links:
+#     - ejbca
+
+console:
+  build: ./devconsole
+  command: /run.sh
+  volumes: 
+    - .:/local
+  links:
+    - ejbca
+    - postgresql
+
+
+
+
+

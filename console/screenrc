@@ -1,0 +1,12 @@
+startup_message off                   # default: on
+defscrollback 4096                    # default: 100
+shell -$SHELL
+vbell off
+nethack on                            # default: off
+crlf off                              # default: off
+caption always "%{= kw} %H | %{kc}%?%-w%?%{kY}%n*%f %t%?(%u)%?%{= kc}%?%+w%? %=|%{kW} %l %{kw}| %{kc}%{-b}%D, %m/%d/%Y |%{kW}%{+b}%c:%s %{wk}" 
+termcapinfo xterm* 'hs:ts=\E]0;:fs=\007:ds=\E]0;\007'
+defhstatus "screen ^E (^Et) | $USER@^EH"
+hardstatus off
+
+
